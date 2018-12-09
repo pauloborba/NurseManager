@@ -1,15 +1,15 @@
 import { Component, OnInit} from '@angular/core';
 import { NgModule} from '@angular/core';
 
-import {Enfermeiro} from './model/enfermeiro';
-import {EnfermeiroService} from './model/enfermeiro.service';
+import {Enfermeiro} from './enfermeiro';
+import {EnfermeiroService} from './enfermeiro.service';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './model/enfermeiros.component.html',
-    styleUrls : ['./model/enfermeiros.component.css']
+    templateUrl: './enfermeiros.component.html',
+    styleUrls : ['./enfermeiros.component.css']
 })
-export class AppComponent {
+export class EnfermeiroComponent implements OnInit{
     constructor(private enfermeiroService : EnfermeiroService){};
 
     enfermeiro : Enfermeiro = new Enfermeiro();
@@ -21,5 +21,11 @@ export class AppComponent {
             this.enfermeiro = new Enfermeiro();
         }
     }
-   
+    ngOnInit(): void{
+        this.enfermeiros = this.enfermeiroService.getEnfermeiros();
+    
+    }
 }
+
+
+
