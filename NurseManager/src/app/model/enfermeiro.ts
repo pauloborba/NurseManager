@@ -7,4 +7,5 @@ export class Enfermeiro {
     vinculo: string;
     disponibilidade;
     horasDict: number;
+    dataAtualizacao: Date;
 }
