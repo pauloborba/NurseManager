@@ -11,7 +11,7 @@ Then são mostrados os enfermeiros “João Azevedo”, “Joana Tavares” e �
 Scenario: Busca por especialização
 Given que eu esteja na página de busca
 Given que o enfermeiro “João Azevedo” tenha especialização em “Obstetrícia”
-Given que a enfermeira “Joana Tavares” tenha especialização em “Cirurgia” e “Neonatologia”
+Given que a enfermeira “Joana Tavares” tenha especialização em “Cirurgia”
 Given que o enfermeiro “Reinaldo Jorge” tenha especialização em “Obstetrícia”
 Given que o enfermeiro “Tibúrcio Farias” tenha especialização em “Neonatologia”
 When eu faço a busca procurando por especialistas em “Cirurgia”, sem especificar nome, setor, turno ou vínculo

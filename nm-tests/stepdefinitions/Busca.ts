@@ -16,9 +16,47 @@ defineSupportCode(function ({ Given, When, Then }) {
     Given(/^que eu esteja na página de busca$/, async() => {
         await browser.get("http://localhost:4200/");
         await expect(browser.getTitle()).to.eventually.equal('NurseManager');
+
         await $("a[name='setores']").click();
-        await $(`input[name='setorname']`).sendKeys("Obstetrícia");
+
+        await $(`input[name='setornome']`).sendKeys("Obstetrícia");
+        await $("button[name='setorcriar']").click();
+
+        await $(`input[name='setornome']`).sendKeys("Cirurgia");
+        await $("button[name='setorcriar']").click();
         
+        await $(`input[name='setornome']`).sendKeys("Neonatologia");
+        await $("button[name='setorcriar']").click();
+
+        await $("a[name='enfermeiros']").click();
+
+        await $(`input[name='enfnome']`).sendKeys("João Azevedo");
+        await $(`select[name='enfsetor']`).sendKeys("Obstetrícia");
+        await $(`select[name='enfturno']`).sendKeys("Turno Manhã");
+        await $(`input[name='enfespecialidade']`).sendKeys("Obstetrícia");
+        await $(`select[name='enfvinculo']`).sendKeys("CLT");
+        await $("button[name='enfcriar']").click();
+
+        await $(`input[name='enfnome']`).sendKeys("Joana Tavares");
+        await $(`select[name='enfsetor']`).sendKeys("Cirurgia");
+        await $(`select[name='enfturno']`).sendKeys("Plantão Diurno");
+        await $(`input[name='enfespecialidade']`).sendKeys("Cirurgia");
+        await $(`select[name='enfvinculo']`).sendKeys("CLT");
+        await $("button[name='enfcriar']").click();
+
+        await $(`input[name='enfnome']`).sendKeys("Reinaldo Jorge");
+        await $(`select[name='enfsetor']`).sendKeys("Obstetrícia");
+        await $(`select[name='enfturno']`).sendKeys("Plantão Noturno");
+        await $(`input[name='enfespecialidade']`).sendKeys("Obstetrícia");
+        await $(`select[name='enfvinculo']`).sendKeys("RJU");
+        await $("button[name='enfcriar']").click();
+
+        await $(`input[name='enfnome']`).sendKeys("Tibúrcio Farias");
+        await $(`select[name='enfsetor']`).sendKeys("Neonatologia");
+        await $(`select[name='enfturno']`).sendKeys("Turno Manhã");
+        await $(`input[name='enfespecialidade']`).sendKeys("Neonatologia");
+        await $(`select[name='enfvinculo']`).sendKeys("RJU");
+        await $("button[name='enfcriar']").click();
 
         await $("a[name='busca']").click();
     })
