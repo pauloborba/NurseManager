@@ -6,22 +6,16 @@ export class Setor {
 
     
 
-    constructor(manha?:number, tarde?:number, diurno?:number, noturno?:number){
-        if(manha || tarde||diurno||noturno){
-            this.turnoList[0].minimumPop = manha;
-            this.turnoList[1].minimumPop = tarde;
-            this.turnoList[2].minimumPop = diurno;
-            this.turnoList[3].minimumPop = noturno;
-        }
-        else{
-            this.clean();
-        }
+    constructor(){
+        this.clean();      
         
     }
 
     clean() : void{
         this.especialidadeSetor = "";
+        
         this.turnoList = [];
+        
     }
     clone() : Setor{
         var setor : Setor = new Setor();

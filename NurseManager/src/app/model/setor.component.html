@@ -8,16 +8,16 @@
     </tr>
     <tr>
         <td><label>Turno Manhã</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[0]"></td>
+        <td><input [(ngModel)] = "setor.turnoList[0].minimumPop"></td>
    
         <td><label>Turno Tarde</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[1]"></td>
+        <td><input [(ngModel)] = "setor.turnoList[1].minimumPop"></td>
 
         <td><label>Plantão Diurno</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[2]"></td>
+        <td><input [(ngModel)] = "setor.turnoList[2].minimumPop"></td>
 
         <td><label>Plantão Noturno</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[3]"></td>
+        <td><input [(ngModel)] = "setor.turnoList[3].minimumPop"></td>
     </tr>
     <tr>
         <button (click) = "criarSetor(setor)">Adicionar</button>
