@@ -5,11 +5,8 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
-let searchNameTerm = ((name,term) => {
-    var allterms: ElementArrayFinder = element.all(by.name(name));
-    return allterms.then(elems => {
-        expect(Promise.resolve(elems[0].getText())).to.eventually.equal(term);
-    })
+let searchNameTerm = (async(name,term) => {
+    await $(`input[name='${name}']`).sendKeys(<string> term);
 })
 
 let folder = (acc, red) => acc && red;
@@ -41,20 +38,11 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     When (/eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo/, async(searchTerm) => {
-        var termsOK = Promise.all([
-            searchNameTerm('namesearch',searchTerm),
-            searchNameTerm('specsearch',""),
-            searchNameTerm('sectorsearch',""),
-            searchNameTerm('shiftsearch',""),
-            searchNameTerm('liaisonsearch',"")
-        ]).then(results => {
-            return results.reduce(folder);
-        })
-        await termsOK;
-
-        await termsOK.then(() => {
-            expect(Promise.resolve(termsOK)).to.eventually.equal(true);
-        })
+        searchNameTerm('namesearch',searchTerm),
+        searchNameTerm('specsearch',""),
+        searchNameTerm('sectorsearch',""),
+        searchNameTerm('shiftsearch',""),
+        searchNameTerm('liaisonsearch',"")
     })
 
     Then (/são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”/, async (resA, resB, resC) => {
