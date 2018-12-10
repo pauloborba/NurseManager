@@ -1,0 +1,43 @@
+<html (mousemove) = "onmove()"></html>
+
+<table>
+    <tr>
+        <td><label>Setor</label></td>
+        <td><input [(ngModel)] = "setor.especialidadeSetor"></td>
+        
+    </tr>
+    <tr>
+        <td><label>{{setor.turnoList[0].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[0].maximumPop"></td>
+   
+        <td><label>{{setor.turnoList[1].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[1].maximumPop"></td>
+
+        <td><label>{{setor.turnoList[2].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[2].maximumPop"></td>
+
+        <td><label>{{setor.turnoList[3].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[3].maximumPop"></td>
+    </tr>
+    <tr>
+        <button (click) = "criarSetor(setor)">Adicionar</button>
+    </tr>
+
+</table>
+
+<table>
+    <tr *ngIf = "setores.length > 0">
+        <th>Setor</th>
+        <th>Turno Manhã</th>
+        <th>Turno Tarde</th>
+        <th>Plantão Diurno</th>
+        <th>Plantão Noturno</th>
+    </tr>
+    <tr *ngFor = "let a of setores">
+        <td>{{a.especialidadeSetor}}</td>
+        <td>{{a.turnoList[0].maximumPop}}</td>
+        <td>{{a.turnoList[1].maximumPop}}</td>
+        <td>{{a.turnoList[2].maximumPop}}</td>
+        <td>{{a.turnoList[3].maximumPop}}</td>
+    </tr>
+</table>
