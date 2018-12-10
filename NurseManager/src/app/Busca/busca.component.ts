@@ -27,7 +27,13 @@ export class BuscaComponent implements OnInit{
     constructor(
         private enfService: EnfermeiroService,
         private setService: SetorService
-    ) {}
+    ) {
+        this.nameSelect = "";
+        this.specSelect = "";
+        this.sectorSelect = "";
+        this.shiftSelect = "";
+        this.liaisonSelect = "";
+    }
 
     nameFilter(enf: Enfermeiro, term: string):boolean{
         if (term.length > 0){
@@ -81,6 +87,7 @@ export class BuscaComponent implements OnInit{
     ngOnInit(): void{
         this.enfList = this.enfService.getEnfermeiros();
         this.feedOptions();
+        this.onSearch();
     }
 
     listSpecs(specs):string{

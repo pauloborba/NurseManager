@@ -16,6 +16,10 @@ defineSupportCode(function ({ Given, When, Then }) {
     Given(/^que eu esteja na página de busca$/, async() => {
         await browser.get("http://localhost:4200/");
         await expect(browser.getTitle()).to.eventually.equal('NurseManager');
+        await $("a[name='setores']").click();
+        await $(`input[name='setorname']`).sendKeys("Obstetrícia");
+        
+
         await $("a[name='busca']").click();
     })
 

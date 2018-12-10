@@ -21,8 +21,8 @@ export class EnfermeiroComponent implements OnInit{
     enfermeiro : Enfermeiro = new Enfermeiro();
     enfermeiros :Enfermeiro[];
 
-    setorSelect: Setor;
-    setorOption: Setor[];
+    setorSelect: string;
+    setorOption: string[];
     turnoSelect: string;
     turnoOption: string[];
     vinculoSelect: string;
@@ -48,9 +48,9 @@ export class EnfermeiroComponent implements OnInit{
     onMove():void{}
 
     feedOptions():void{
-        this.setorOption = [new Setor()]; //dummy sector with empty name
+        this.setorOption = [""];
         for (let setor of this.setorService.getSetores()){
-            this.setorOption.push(setor);
+            this.setorOption.push(setor.especialidadeSetor);
         }
 
         this.turnoOption = ["Turno Manhã","Turno Tarde","Plantão Diurno","Plantão Noturno"];
