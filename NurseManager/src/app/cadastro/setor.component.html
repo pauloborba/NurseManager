@@ -7,17 +7,17 @@
         
     </tr>
     <tr>
-        <td><label>Turno Manhã</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[0].minimumPop"></td>
+        <td><label>{{setor.turnoList[0].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[0].maximumPop"></td>
    
-        <td><label>Turno Tarde</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[1].minimumPop"></td>
+        <td><label>{{setor.turnoList[1].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[1].maximumPop"></td>
 
-        <td><label>Plantão Diurno</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[2].minimumPop"></td>
+        <td><label>{{setor.turnoList[2].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[2].maximumPop"></td>
 
-        <td><label>Plantão Noturno</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[3].minimumPop"></td>
+        <td><label>{{setor.turnoList[3].nome}}</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[3].maximumPop"></td>
     </tr>
     <tr>
         <button (click) = "criarSetor(setor)">Adicionar</button>
@@ -34,10 +34,10 @@
         <th>Plantão Noturno</th>
     </tr>
     <tr *ngFor = "let a of setores">
-        <td>{{a.EspecialidadeSetor}}</td>
-        <td>{{a.turnoList[0].minimumPop}}</td>
-        <td>{{a.turnoList[1].minimumPop}}</td>
-        <td>{{a.turnoList[2].minimumPop}}</td>
-        <td>{{a.turnoList[3].minimumPop}}</td>
+        <td>{{a.especialidadeSetor}}</td>
+        <td>{{a.turnoList[0].maximumPop}}</td>
+        <td>{{a.turnoList[1].maximumPop}}</td>
+        <td>{{a.turnoList[2].maximumPop}}</td>
+        <td>{{a.turnoList[3].maximumPop}}</td>
     </tr>
 </table>

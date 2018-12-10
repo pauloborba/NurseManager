@@ -13,7 +13,9 @@ export class SetorService{
             this.setores.push(setor);
             result = setor;
         }
+        console.log(this.setores);
         return result;
+        
     }
 
     setorNaoCadastrado(especialidade : string) : boolean{

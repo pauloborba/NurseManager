@@ -2,14 +2,22 @@
 
 <table>
 <tr>
-   <td><label>Nome </label></td>
-   <td><input [(ngModel)]="enfermeiro.nome" ></td>
+    <td><label>Nome </label></td>
+    <td><input [(ngModel)]="enfermeiro.nome" ></td>
 
-   <td><label>Setor </label></td>
-   <td><input [(ngModel)]="enfermeiro.setor" ></td>
+    <td><label>Setor </label></td>
+    <td>
+        <select [(ngModel)]="setorSelect">
+            <option *ngFor="let setor of setorOption">{{setor.especialidadeSetor}}</option>
+        </select>
+    </td>
 
-   <td><label>Turno </label></td>
-   <td><input [(ngModel)]="enfermeiro.turno" ></td>
+    <td><label>Turno </label></td>
+    <td>
+        <select [(ngModel)]="turnoSelect">
+            <option *ngFor="let turno of turnoOption">{{turno}}</option>
+        </select>
+    </td>
    
 </tr>
 
@@ -18,37 +26,41 @@
    
 </tr>
 <tr>
-   <td><label>Especialidade </label></td>
-   <td><input [(ngModel)]="enfermeiro.especialidadeList" ></td>
+    <td><label>Especialidade </label></td>
+    <td><input [(ngModel)]="enfermeiro.especialidadeList[0].nome" ></td>
    
-   <td><label>Titulacao </label></td>
-   <td><input [(ngModel)]="enfermeiro.titulacaoList" ></td>
+    <td><label>Titulacao </label></td>
+    <td><input [(ngModel)]="enfermeiro.titulacaoList" ></td>
 
-   <td><label>Vinculo </label></td>
-   <td><input [(ngModel)]="enfermeiro.vinculo" ></td>
+    <td><label>Vinculo </label></td>
+    <td>
+        <select [(ngModel)]="vinculoSelect">
+            <option *ngFor="let vinculo of vinculoOption">{{vinculo}}</option>
+        </select>
+    </td>
 
-   <td><button (click)="criarEnfermeiro(enfermeiro)">Adicionar</button></td>
+    <td><button (click)="criarEnfermeiro(enfermeiro)">Adicionar</button></td>
 </tr>
 
 </table>
 
 <table>
 <tr *ngIf="enfermeiros.length > 0">
-   <th>Nome</th>
-   <th>Setor</th>
-   <th>Turno</th>
-   <th>Especialidade</th>
-   <th>Titulacao</th>
-   <th>vinculo</th>
+    <th>Nome</th>
+    <th>Setor</th>
+    <th>Turno</th>
+    <th>Especialidade</th>
+    <th>Titulacao</th>
+    <th>vinculo</th>
 
 </tr>
 <tr *ngFor="let a of enfermeiros">
-   <td>{{a.nome}}</td>
-   <td>{{a.setor}}</td>
-   <td>{{a.turno}}</td>
-   <td>{{a.especialidadeList}}</td>
-   <td>{{a.titulacaoList}}</td>
-   <td>{{a.vinculo}}</td>
+    <td>{{a.nome}}</td>
+    <td>{{a.setor.especialidadeSetor}}</td>
+    <td>{{a.turno.nome}}</td>
+    <td>{{a.especialidadeList[0].nome}}</td>
+    <td>{{a.titulacaoList}}</td>
+    <td>{{a.vinculo}}</td>
 </tr>
 </table>
 
