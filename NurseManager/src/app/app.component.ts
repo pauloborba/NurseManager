@@ -6,8 +6,8 @@ import {EnfermeiroService} from './model/enfermeiro.service';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './model/enfermeiros.component.html',
-    styleUrls : ['./model/enfermeiros.component.css']
+    templateUrl: './app.component.html',
+    styleUrls : ['./app.component.css']
 })
 export class AppComponent {
     constructor(private enfermeiroService : EnfermeiroService){};
