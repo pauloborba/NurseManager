@@ -80,6 +80,7 @@ export class BuscaComponent implements OnInit{
 
     ngOnInit(): void{
         this.enfList = this.enfService.getEnfermeiros();
+        this.feedOptions();
     }
 
     listSpecs(specs):string{
@@ -89,5 +90,25 @@ export class BuscaComponent implements OnInit{
             result = result.concat(`;${specs[i].nome}`);
         }
         return result;
+    }
+
+    feedOptions() {
+        var specs = [""];
+        for (let enf of this.enfList) {
+            for (let spec of enf.especialidadeList){
+                if (!specs.includes(spec.nome)) specs.push(spec.nome);
+            }
+        }
+        this.specOption = specs;
+
+        var sectors = [""];
+        for(let sector of this.setService.getSetores()){
+            sectors.push(sector.especialidadeSetor);
+        }
+        this.sectorOption = sectors;
+
+        this.shiftOption = ["","Turno Manhã","Turno Tarde","Plantão Diurno","Plantão Noturno"];
+
+        this.liaisonOption = ["","CLT","RJU"];
     }
 }
