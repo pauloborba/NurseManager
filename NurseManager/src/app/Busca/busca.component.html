@@ -8,7 +8,7 @@
             <td><label>Busca por especialidade</label></td>
             <td>
                 <select [(ngModel)]="specSelect" (change)="onSearch()" name="specsearch">
-                    <option *ngFor="let spec of specOption">{{parent}}</option>
+                    <option *ngFor="let spec of specOption">{{spec}}</option>
                 </select>
             </td>
         </tr>
@@ -16,7 +16,7 @@
             <td><label>Busca por setor</label></td>
             <td>
                 <select [(ngModel)]="sectorSelect" (change)="onSearch()" name="sectorsearch">
-                    <option *ngFor="let sector of sectorOption">{{parent}}</option>
+                    <option *ngFor="let sector of sectorOption">{{sector}}</option>
                 </select>
             </td>
         </tr>
@@ -24,7 +24,7 @@
             <td><label>Busca por turno</label></td>
             <td>
                 <select [(ngModel)]="shiftSelect" (change)="onSearch()" name="shiftsearch">
-                    <option *ngFor="let shift of shiftOption">{{parent}}</option>
+                    <option *ngFor="let shift of shiftOption">{{shift}}</option>
                 </select>
             </td>
         </tr>
@@ -32,7 +32,7 @@
             <td><label>Busca por vínculo</label></td>
             <td>
                 <select [(ngModel)]="liaisonSelect" (change)="onSearch()" name="liaisonsearch">
-                    <option *ngFor="let liaison of liaisonOption">{{parent}}</option>
+                    <option *ngFor="let liaison of liaisonOption">{{liaison}}</option>
                 </select>
             </td>
         </tr>
@@ -41,19 +41,19 @@
 
 <div>
     <table>
-        <td>
+        <tr>
             <th>Nome</th>
             <th>Especialidade(s)</th>
             <th>Setor</th>
             <th>Turno</th>
             <th>Vínculo</th>
-        </td>
-        <td *ngFor="let enf of filtList" name="enflist">
+        </tr>
+        <tr *ngFor="let enf of filtList" name="enflist">
             <td name="enfname">{{enf.nome}}</td>
             <td name="enfspecs">{{listSpecs(enf.especialidadeList)}}</td>
             <td name="enfsector">{{enf.setor.especialidadeSetor}}</td>
             <td name="enfshift">{{enf.turno.nome}}</td>
             <td name="enfliaison">{{enf.vinculo}}</td>
-        </td>
+        </tr>
     </table>
 </div>
