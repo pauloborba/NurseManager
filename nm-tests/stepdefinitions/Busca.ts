@@ -5,13 +5,9 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
-let searchNameTerm = (async(name,term) => {
-    await $(`input[name='${name}']`).sendKeys(<string> term);
-})
+defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
-let folder = (acc, red) => acc && red;
-
-defineSupportCode(function ({ Given, When, Then }) {
+    setDefaultTimeout(10 * 1000);
 
     Given(/^que eu esteja na página de busca$/, async() => {
         await browser.get("http://localhost:4200/");
@@ -61,7 +57,7 @@ defineSupportCode(function ({ Given, When, Then }) {
         await $("a[name='busca']").click();
     })
 
-    Given(/^que os enfermeiros "([^\"]*)", “([^\"]*)”, “([^\"]*)” e “([^\"]*)” estejam cadastrados$/, async (enfA, enfB, enfC, enfD) => {
+    Given(/^que os enfermeiros “([^\"]*)”, “([^\"]*)”, “([^\"]*)” e “([^\"]*)” estejam cadastrados$/, async (enfA, enfB, enfC, enfD) => {
         var allnames: ElementArrayFinder = element.all(by.name('enfname'));
         await allnames;
 
@@ -80,11 +76,13 @@ defineSupportCode(function ({ Given, When, Then }) {
     })
 
     When (/eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo/, async(searchTerm) => {
-        searchNameTerm('namesearch',searchTerm),
-        searchNameTerm('specsearch',""),
-        searchNameTerm('sectorsearch',""),
-        searchNameTerm('shiftsearch',""),
-        searchNameTerm('liaisonsearch',"")
+        await sleep(50);
+        await $(`input[name='namesearch']`).sendKeys(<string> searchTerm);
+        await $(`select[name='specsearch']`).sendKeys("");
+        await $(`select[name='sectorsearch']`).sendKeys("");
+        await $(`select[name='shiftsearch']`).sendKeys("");
+        await $(`select[name='liaisonsearch']`).sendKeys("");
+        await sleep(50);
     })
 
     Then (/são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”/, async (resA, resB, resC) => {

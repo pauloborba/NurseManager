@@ -5,7 +5,7 @@ Feature: As a Chefe de Divisão
 Scenario: Busca por nome
 Given que eu esteja na página de busca
 Given que os enfermeiros “João Azevedo”, “Joana Tavares”, “Reinaldo Jorge” e “Tibúrcio Farias” estejam cadastrados
-When eu faço a busca procurando por nomes com “jo”, sem especificar especialização, setor, turno ou vínculo
+When eu faço a busca procurando por nomes com “Jo”, sem especificar especialização, setor, turno ou vínculo
 Then são mostrados os enfermeiros “João Azevedo”, “Joana Tavares” e “Reinaldo Jorge”
 
 Scenario: Busca por especialização
