@@ -3,18 +3,18 @@
 <table>
 <tr>
     <td><label>Nome </label></td>
-    <td><input [(ngModel)]="enfermeiro.nome" ></td>
+    <td><input [(ngModel)]="enfermeiro.nome" name="enfnome"></td>
 
     <td><label>Setor </label></td>
     <td>
-        <select [(ngModel)]="setorSelect">
+        <select [(ngModel)]="setorSelect" name="enfsetor">
             <option *ngFor="let setor of setorOption">{{setor}}</option>
         </select>
     </td>
 
     <td><label>Turno </label></td>
     <td>
-        <select [(ngModel)]="turnoSelect">
+        <select [(ngModel)]="turnoSelect" name="enfturno">
             <option *ngFor="let turno of turnoOption">{{turno}}</option>
         </select>
     </td>
@@ -27,19 +27,19 @@
 </tr>
 <tr>
     <td><label>Especialidade </label></td>
-    <td><input [(ngModel)]="enfermeiro.especialidadeList[0].nome" ></td>
+    <td><input [(ngModel)]="enfermeiro.especialidadeList[0].nome" name="enfespecialidade"></td>
    
     <td><label>Titulacao </label></td>
-    <td><input [(ngModel)]="enfermeiro.titulacaoList" ></td>
+    <td><input [(ngModel)]="enfermeiro.titulacaoList" name="enftitulacao"></td>
 
     <td><label>Vinculo </label></td>
     <td>
-        <select [(ngModel)]="vinculoSelect">
+        <select [(ngModel)]="vinculoSelect" name="enfvinculo">
             <option *ngFor="let vinculo of vinculoOption">{{vinculo}}</option>
         </select>
     </td>
 
-    <td><button (click)="criarEnfermeiro(enfermeiro)">Adicionar</button></td>
+    <td><button (click)="criarEnfermeiro(enfermeiro)" name="enfcriar">Adicionar</button></td>
 </tr>
 
 </table>

@@ -3,24 +3,24 @@
 <table>
     <tr>
         <td><label>Setor</label></td>
-        <td><input [(ngModel)] = "setor.especialidadeSetor"></td>
+        <td><input [(ngModel)] = "setor.especialidadeSetor" name="setornome"></td>
         
     </tr>
     <tr>
         <td><label>{{setor.turnoList[0].nome}}</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[0].maximumPop"></td>
+        <td><input [(ngModel)] = "setor.turnoList[0].maximumPop" name="turnopopTM"></td>
    
         <td><label>{{setor.turnoList[1].nome}}</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[1].maximumPop"></td>
+        <td><input [(ngModel)] = "setor.turnoList[1].maximumPop" name="turnopopTT"></td>
 
         <td><label>{{setor.turnoList[2].nome}}</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[2].maximumPop"></td>
+        <td><input [(ngModel)] = "setor.turnoList[2].maximumPop" name="turnopopPD"></td>
 
         <td><label>{{setor.turnoList[3].nome}}</label></td>
-        <td><input [(ngModel)] = "setor.turnoList[3].maximumPop"></td>
+        <td><input [(ngModel)] = "setor.turnoList[3].maximumPop" name="turnopopPN"></td>
     </tr>
     <tr>
-        <button (click) = "criarSetor(setor)">Adicionar</button>
+        <button (click) = "criarSetor(setor)" name="setorcriar">Adicionar</button>
     </tr>
 
 </table>
