@@ -12,6 +12,8 @@ let searchNameTerm = ((name,term) => {
     })
 })
 
+let folder = (acc, red) => acc && red;
+
 defineSupportCode(function ({ Given, When, Then }) {
 
     Given(/^que eu esteja na página de busca$/, async() => {
@@ -46,8 +48,7 @@ defineSupportCode(function ({ Given, When, Then }) {
             searchNameTerm('shiftsearch',""),
             searchNameTerm('liaisonsearch',"")
         ]).then(results => {
-            const reducer = (acc, red) => acc && red;
-            return results.reduce(reducer);
+            return results.reduce(folder);
         })
         await termsOK;
 
