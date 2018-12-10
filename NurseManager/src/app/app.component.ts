@@ -24,7 +24,6 @@ export class AppComponent {
         }
     }
 
-
     setor : Setor = new Setor();
     setores : Setor[];
 
