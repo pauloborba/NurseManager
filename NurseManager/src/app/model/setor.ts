@@ -32,6 +32,13 @@ export class Setor {
         return turnos;
     }
     
+    // stringTurnos(): string[]{
+    //     var turnos : string[]= [];
+    //     for(let turno of this.turnoList){
+    //         turnos.push(turno.nome);
+    //     }
+    //     return turnos;
+    // }
 
     
 }
