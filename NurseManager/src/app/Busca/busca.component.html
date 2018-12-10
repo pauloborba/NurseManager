@@ -2,12 +2,12 @@
     <table>
         <tr>
             <td><label>Busca por nome</label></td>
-            <td><input [(ngModel)]="nameSelect" (change)="onSearch()"></td>
+            <td><input [(ngModel)]="nameSelect" (change)="onSearch()" name="namesearch"></td>
         </tr>
         <tr>
             <td><label>Busca por especialidade</label></td>
             <td>
-                <select [(ngModel)]="specSelect" (change)="onSearch()">
+                <select [(ngModel)]="specSelect" (change)="onSearch()" name="specsearch">
                     <option *ngFor="let spec of specOption">{{parent}}</option>
                 </select>
             </td>
@@ -15,7 +15,7 @@
         <tr>
             <td><label>Busca por setor</label></td>
             <td>
-                <select [(ngModel)]="sectorSelect" (change)="onSearch()">
+                <select [(ngModel)]="sectorSelect" (change)="onSearch()" name="sectorsearch">
                     <option *ngFor="let sector of sectorOption">{{parent}}</option>
                 </select>
             </td>
@@ -23,7 +23,7 @@
         <tr>
             <td><label>Busca por turno</label></td>
             <td>
-                <select [(ngModel)]="shiftSelect" (change)="onSearch()">
+                <select [(ngModel)]="shiftSelect" (change)="onSearch()" name="shiftsearch">
                     <option *ngFor="let shift of shiftOption">{{parent}}</option>
                 </select>
             </td>
@@ -31,7 +31,7 @@
         <tr>
             <td><label>Busca por vínculo</label></td>
             <td>
-                <select [(ngModel)]="liaisonSelect" (change)="onSearch()">
+                <select [(ngModel)]="liaisonSelect" (change)="onSearch()" name="liaisonsearch">
                     <option *ngFor="let liaison of liaisonOption">{{parent}}</option>
                 </select>
             </td>
@@ -48,12 +48,12 @@
             <th>Turno</th>
             <th>Vínculo</th>
         </td>
-        <td *ngFor="let enf of filtList">
-            <td>{{enf.nome}}</td>
-            <td>{{listSpecs(enf.especialidadeList)}}</td>
-            <td>{{enf.setor.especialidadeSetor}}</td>
-            <td>{{enf.turno.nome}}</td>
-            <td>{{enf.vinculo}}</td>
+        <td *ngFor="let enf of filtList" name="enflist">
+            <td name="enfname">{{enf.nome}}</td>
+            <td name="enfspecs">{{listSpecs(enf.especialidadeList)}}</td>
+            <td name="enfsector">{{enf.setor.especialidadeSetor}}</td>
+            <td name="enfshift">{{enf.turno.nome}}</td>
+            <td name="enfliaison">{{enf.vinculo}}</td>
         </td>
     </table>
 </div>
