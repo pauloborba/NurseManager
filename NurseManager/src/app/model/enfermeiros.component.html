@@ -4,28 +4,50 @@
 <tr>
    <td><label>Nome </label></td>
    <td><input [(ngModel)]="enfermeiro.nome" ></td>
-   <td><button (click)="criarEnfermeiro(enfermeiro)">Adicionar</button></td>
-</tr>
-<tr>
+
    <td><label>Setor </label></td>
    <td><input [(ngModel)]="enfermeiro.setor" ></td>
+
+   <td><label>Turno </label></td>
+   <td><input [(ngModel)]="enfermeiro.turno" ></td>
+   
+</tr>
+
+<tr>
+   
    
 </tr>
 <tr>
-   <td><label>vinculo </label></td>
+   <td><label>Especialidade </label></td>
+   <td><input [(ngModel)]="enfermeiro.especialidadeList" ></td>
+   
+   <td><label>Titulacao </label></td>
+   <td><input [(ngModel)]="enfermeiro.titulacaoList" ></td>
+
+   <td><label>Vinculo </label></td>
    <td><input [(ngModel)]="enfermeiro.vinculo" ></td>
+
+   <td><button (click)="criarEnfermeiro(enfermeiro)">Adicionar</button></td>
 </tr>
+
 </table>
 
 <table>
 <tr *ngIf="enfermeiros.length > 0">
    <th>Nome</th>
-   <th>setor</th>
+   <th>Setor</th>
+   <th>Turno</th>
+   <th>Especialidade</th>
+   <th>Titulacao</th>
    <th>vinculo</th>
+
 </tr>
 <tr *ngFor="let a of enfermeiros">
    <td>{{a.nome}}</td>
    <td>{{a.setor}}</td>
+   <td>{{a.turno}}</td>
+   <td>{{a.especialidadeList}}</td>
+   <td>{{a.titulacaoList}}</td>
    <td>{{a.vinculo}}</td>
 </tr>
 </table>
