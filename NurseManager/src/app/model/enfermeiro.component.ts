@@ -25,6 +25,8 @@ export class EnfermeiroComponent implements OnInit{
         this.enfermeiros = this.enfermeiroService.getEnfermeiros();
     
     }
+
+    onMove():void{}
 }
 
 

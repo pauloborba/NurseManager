@@ -1,0 +1,43 @@
+<html (mousemove) = "onmove()"></html>
+
+<table>
+    <tr>
+        <td><label>Setor</label></td>
+        <td><input [(ngModel)] = "setor.especialidadeSetor"></td>
+        
+    </tr>
+    <tr>
+        <td><label>Turno Manhã</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[0]"></td>
+   
+        <td><label>Turno Tarde</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[1]"></td>
+
+        <td><label>Plantão Diurno</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[2]"></td>
+
+        <td><label>Plantão Noturno</label></td>
+        <td><input [(ngModel)] = "setor.turnoList[3]"></td>
+    </tr>
+    <tr>
+        <button (click) = "criarSetor(setor)">Adicionar</button>
+    </tr>
+
+</table>
+
+<table>
+    <tr *ngIf = "setores.length > 0">
+        <th>Setor</th>
+        <th>Turno Manhã</th>
+        <th>Turno Tarde</th>
+        <th>Plantão Diurno</th>
+        <th>Plantão Noturno</th>
+    </tr>
+    <tr *ngFor = "let a of setores">
+        <td>{{a.EspecialidadeSetor}}</td>
+        <td>{{a.turnoList[0].minimumPop}}</td>
+        <td>{{a.turnoList[1].minimumPop}}</td>
+        <td>{{a.turnoList[2].minimumPop}}</td>
+        <td>{{a.turnoList[3].minimumPop}}</td>
+    </tr>
+</table>
