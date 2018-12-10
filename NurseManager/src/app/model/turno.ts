@@ -5,6 +5,7 @@ export class Turno {
     enfermeiroList : Enfermeiro[];
     minimumPop: number;
     maximumPop: number;
+    nome :  String;
 
    
     constructor(minimo?: number ){
