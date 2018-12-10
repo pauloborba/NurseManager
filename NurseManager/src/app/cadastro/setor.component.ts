@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgModule} from '@angular/core';
 
-import {Setor} from './setor';
-import {SetorService} from './setor.service';
+import {Setor} from '../model/setor';
+import {SetorService} from '../model/setor.service';
 
 @Component({
     selector:'app-root',

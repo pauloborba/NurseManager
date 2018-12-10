@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { NgModule} from '@angular/core';
 
-import {Enfermeiro} from './enfermeiro';
-import {EnfermeiroService} from './enfermeiro.service';
+import {Enfermeiro} from '../model/enfermeiro';
+import {EnfermeiroService} from '../model/enfermeiro.service';
 
 @Component({
     selector: 'app-root',
