@@ -1,6 +1,7 @@
 import { Enfermeiro } from "./enfermeiro";
 
 export class Sugestao {
+    
     sugestaoList: Array<[Enfermeiro, number]>;
     Sugestao(sL: Array<[Enfermeiro, number]>){
         this.sugestaoList = sL;
