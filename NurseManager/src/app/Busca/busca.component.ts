@@ -39,7 +39,7 @@ export class BuscaComponent implements OnInit{
 
     specFilter(enf: Enfermeiro, term: string):boolean{
         if (term.length > 0){
-            return enf.especialidadeList.find(spec => spec.nome === term);
+            return enf.especialidadeList.some(spec => spec.nome === term);
         } else {
             return true;
         }
