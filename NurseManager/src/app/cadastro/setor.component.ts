@@ -26,7 +26,7 @@ export class SetorComponent implements OnInit{
             this.setores.push(a);
             this.setor = new Setor();
         }else{
-            this.setorExistente =true;
+            alert("Setor já existente");
         }
     }
 
