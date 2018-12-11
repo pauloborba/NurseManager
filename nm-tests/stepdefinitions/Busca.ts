@@ -70,7 +70,8 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     })
 
     When (/^eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo$/, async(searchTerm) => {
-        setSearch(searchTerm,"","","","");
+        await setSearch(searchTerm,"","","","");
+        await sleep(1000);
     })
 
     Then (/^são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”$/, async (resA, resB, resC) => {
@@ -111,7 +112,8 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     })
 
     When (/^eu faço a busca procurando por especialistas em “([^\"]*)”, sem especificar nome, setor, turno ou vínculo$/, async (searchTerm) => {
-        setSearch("",searchTerm,"","","");
+        await setSearch("",searchTerm,"","","");
+        await sleep(1000);
     })
 
     Then (/^é mostrado o enfermeiro “([^\"]*)”$/, async (enfres) => {
