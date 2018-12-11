@@ -1,13 +1,18 @@
+import { Especialidade } from "./especialidade";
+import { Turno } from "./turno";
+import { Setor } from "./setor";
+
 export class Enfermeiro {
-    setor;
-    turno;
-    especialidadeList;
-    titulacaoList;
+    setor: Setor;
+    turno: Turno;
+    especialidadeList: Especialidade[];
+    titulacaoList: string[];
     nome: string;
     vinculo: string;
-    disponibilidade;
+    disponibilidade: string;
     horasDict: number;
     dataAtualizacao: Date;
+    experiencia: number;
     constructor(){
         this.clean();
     }
@@ -15,13 +20,16 @@ export class Enfermeiro {
     clean() : void{
         this.setor = null;
         this.turno = null;
-        this.especialidadeList = null;
-        this.titulacaoList = null;
+        this.especialidadeList = [];
+        this.especialidadeList.push(new Especialidade());
+        this.titulacaoList = [];
+        this.titulacaoList.push("");
         this.nome = "";
         this.vinculo ="";
-        this.disponibilidade = null;
-        this.horasDict = null;
-        this.dataAtualizacao = null
+        this.disponibilidade = "";
+        this.horasDict = 0;
+        this.dataAtualizacao = new Date("2012-12-21");
+        this.experiencia = 0;
 
     }
 
@@ -36,6 +44,7 @@ export class Enfermeiro {
         enfermeiro.disponibilidade = this.disponibilidade;
         enfermeiro.horasDict = this.horasDict;
         enfermeiro.dataAtualizacao = this.dataAtualizacao;
+        enfermeiro.experiencia = this.experiencia;
         return enfermeiro;
     }
 }
