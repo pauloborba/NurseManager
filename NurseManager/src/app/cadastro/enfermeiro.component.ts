@@ -6,6 +6,7 @@ import {EnfermeiroService} from '../model/enfermeiro.service';
 import { Setor } from '../model/setor';
 import { SetorService } from '../model/setor.service';
 import { Turno } from '../model/turno';
+import { Ranker } from '../Sugestao/ranker';
 
 @Component({
     selector: 'app-root',
@@ -27,6 +28,8 @@ export class EnfermeiroComponent implements OnInit{
     turnoOption: string[];
     vinculoSelect: string;
     vinculoOption: string[];
+    //para teste do ranking
+    ranker: Ranker = new Ranker();
     
     criarEnfermeiro(a : Enfermeiro) :void{
         var setor: Setor = this.setorService.getSetores().find(setor => setor.especialidadeSetor == this.setorSelect);
@@ -34,8 +37,10 @@ export class EnfermeiroComponent implements OnInit{
         this.enfermeiro.setor = setor;
         this.enfermeiro.turno = turno;
         this.enfermeiro.vinculo = this.vinculoSelect;
-
+        
         if (this.enfermeiroService.criar(a)){
+            //para teste do ranking
+            a.ranking = this.ranker.getRanking(a, a.setor, a.turno.nome);
             this.enfermeiros.push(a);
             this.setorService.atualizaSetor(this.setorSelect, this.turnoSelect,a);
             this.enfermeiro = new Enfermeiro();

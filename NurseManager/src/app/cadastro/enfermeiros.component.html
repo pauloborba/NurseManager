@@ -33,7 +33,7 @@
     <td><input [(ngModel)]="enfermeiro.especialidadeList[0].nome" name="enfespecialidade"></td>
    
     <td><label>Titulacao </label></td>
-    <td><input [(ngModel)]="enfermeiro.titulacaoList" name="enftitulacao"></td>
+    <td><input [(ngModel)]="enfermeiro.titulacaoList[0]" name="enftitulacao"></td>
 
     <td><label>Vinculo </label></td>
     <td>
@@ -55,8 +55,8 @@
     <th>Turno</th>
     <th>Especialidade</th>
     <th>Titulacao</th>
-    <th>vinculo</th>
-
+    <th>Vinculo</th>
+    <th>Nota para o seu Setor</th>
 </tr>
 <tr *ngFor="let a of enfermeiros">
     <td>{{a.nome}}</td>
@@ -66,6 +66,7 @@
     <td>{{a.especialidadeList[0].nome}}</td>
     <td>{{a.titulacaoList}}</td>
     <td>{{a.vinculo}}</td>
+    <td>{{a.ranking}}</td>
 </tr>
 </table>
 

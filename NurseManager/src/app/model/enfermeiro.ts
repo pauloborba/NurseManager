@@ -13,6 +13,7 @@ export class Enfermeiro {
     horasDict: number;
     dataAtualizacao: Date;
     experiencia: number;
+    ranking: number;
     constructor(){
         this.clean();
     }
@@ -30,6 +31,7 @@ export class Enfermeiro {
         this.horasDict = 0;
         this.dataAtualizacao = new Date("2012-12-21");
         this.experiencia = 0;
+        this.ranking = 0;
 
     }
 
@@ -45,6 +47,7 @@ export class Enfermeiro {
         enfermeiro.horasDict = this.horasDict;
         enfermeiro.dataAtualizacao = this.dataAtualizacao;
         enfermeiro.experiencia = this.experiencia;
+        enfermeiro.ranking = this.ranking;
         return enfermeiro;
     }
 }
