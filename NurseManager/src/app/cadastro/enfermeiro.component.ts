@@ -37,6 +37,7 @@ export class EnfermeiroComponent implements OnInit{
 
         if (this.enfermeiroService.criar(a)){
             this.enfermeiros.push(a);
+            this.setorService.atualizaSetor(this.setorSelect, this.turnoSelect,a);
             this.enfermeiro = new Enfermeiro();
         }
     }

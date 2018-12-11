@@ -14,7 +14,7 @@ export class SetorComponent implements OnInit{
 
     setor: Setor = new Setor();
     setores : Setor[];
-    setorExistente : boolean  = false;
+    
 
     criarSetor(a: Setor) : void{
         this.setor.turnoList[0].maximumPop = (+this.setor.turnoList[0].maximumPop);
@@ -31,7 +31,7 @@ export class SetorComponent implements OnInit{
     }
 
     onMove(): void{
-        this.setorExistente = false;
+       
     }
 
     ngOnInit(): void{
