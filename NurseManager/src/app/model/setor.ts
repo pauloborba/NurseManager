@@ -7,38 +7,38 @@ export class Setor {
     
 
     constructor(){
-        this.clean();      
-        
+        this.clean();
+        this.turnoList = [];
+        this.turnoList.push(new Turno("Turno Manhã"));
+        this.turnoList.push(new Turno("Turno Tarde"));
+        this.turnoList.push(new Turno("Plantão Diurno"));
+        this.turnoList.push(new Turno("Plantão Noturno"));
     }
 
     clean() : void{
         this.especialidadeSetor = "";
-        
         this.turnoList = [];
-        
     }
+
     clone() : Setor{
         var setor : Setor = new Setor();
         setor.especialidadeSetor = this.especialidadeSetor;
-        setor.turnoList =this.cloneTurnos() ;
+        setor.turnoList = this.cloneTurnos();
         return setor;
     }
 
     cloneTurnos(): Turno[]{
-        var turnos : Turno[]= [];
-        for(let key in this.turnoList){
-            turnos[key] = this.turnoList[key];
+        var turnos : Turno[] = [];
+        for(let turno of this.turnoList){
+            var turnoclone = new Turno(turno.nome);
+            for (let enf of turno.enfermeiroList){
+                turnoclone.enfermeiroList.push(enf);
+            }
+            turnoclone.maximumPop = turno.maximumPop;
+            turnoclone.minimumPop = turno.minimumPop;
+            turnos.push(turnoclone);
         }
         return turnos;
     }
-    
-    // stringTurnos(): string[]{
-    //     var turnos : string[]= [];
-    //     for(let turno of this.turnoList){
-    //         turnos.push(turno.nome);
-    //     }
-    //     return turnos;
-    // }
 
-    
 }

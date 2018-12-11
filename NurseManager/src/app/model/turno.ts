@@ -5,21 +5,18 @@ export class Turno {
     enfermeiroList : Enfermeiro[];
     minimumPop: number;
     maximumPop: number;
-    nome :  string;
+    nome: string;
 
    
-    constructor(minimo?: number ){
-        if(minimo){
-        this.enfermeiroList = [];
-        this.minimumPop = minimo;
-        this.maximumPop = null;
-        } else this.clean();
+    constructor(nome: string){
+        this.clean();
+        this.nome = nome;
     }
 
     clean(): void{
+        this.nome = "";
         this.enfermeiroList = [];
-        this.minimumPop = null;
-        this.maximumPop = null;
-
+        this.minimumPop = 0;
+        this.maximumPop = 0;
     }
 }
