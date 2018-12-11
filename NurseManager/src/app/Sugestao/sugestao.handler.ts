@@ -1,9 +1,9 @@
-import { EnfermeiroService } from './enfermeiro.service';
+import { EnfermeiroService } from '../model/enfermeiro.service';
 import { Ranker } from './ranker';
-import { Enfermeiro } from './enfermeiro';
+import { Enfermeiro } from '../model/enfermeiro';
 import { Sugestao } from './sugestao';
-import { Setor } from './setor';
-import { Turno } from './turno';
+import { Setor } from '../model/setor';
+import { Turno } from '../model/turno';
 
 export class SugestaoHandler {
     //gera e guarda uma lista de enfermeiros ordenados por ranking

@@ -1,4 +1,4 @@
-import { SugestaoHandler } from './sugestao.handler';
+import { SugestaoHandler } from '../Sugestao/sugestao.handler';
 import {Enfermeiro} from './enfermeiro';
 
 export class Turno {
