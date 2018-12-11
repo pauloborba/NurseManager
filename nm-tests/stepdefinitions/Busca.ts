@@ -5,6 +5,14 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
+let setSearch = (async (name,spec,sector,shift,liaison) => {
+    await $(`input[name='namesearch']`).sendKeys(<string> name);
+    await $(`select[name='specsearch']`).sendKeys(<string> spec);
+    await $(`select[name='sectorsearch']`).sendKeys(<string> sector);
+    await $(`select[name='shiftsearch']`).sendKeys(<string> shift);
+    await $(`select[name='liaisonsearch']`).sendKeys(<string> liaison);
+})
+
 defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
     setDefaultTimeout(10 * 1000);
@@ -75,17 +83,11 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    When (/eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo/, async(searchTerm) => {
-        await sleep(50);
-        await $(`input[name='namesearch']`).sendKeys(<string> searchTerm);
-        await $(`select[name='specsearch']`).sendKeys("");
-        await $(`select[name='sectorsearch']`).sendKeys("");
-        await $(`select[name='shiftsearch']`).sendKeys("");
-        await $(`select[name='liaisonsearch']`).sendKeys("");
-        await sleep(50);
+    When (/^eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo$/, async(searchTerm) => {
+        setSearch(searchTerm,"","","","");
     })
 
-    Then (/são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”/, async (resA, resB, resC) => {
+    Then (/^são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”$/, async (resA, resB, resC) => {
         var allnames: ElementArrayFinder = element.all(by.name('enfname'));
         await allnames;
 
