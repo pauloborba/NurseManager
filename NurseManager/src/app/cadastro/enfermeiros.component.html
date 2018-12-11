@@ -58,15 +58,15 @@
     <th>Vinculo</th>
     <th>Nota para o seu Setor</th>
 </tr>
-<tr *ngFor="let a of enfermeiros">
-    <td>{{a.nome}}</td>
+<tr *ngFor="let a of enfermeiros" name="enflist">
+    <td name="enfname">{{a.nome}}</td>
     <td>{{a.experiencia}}</td>
     <td>{{a.setor.especialidadeSetor}}</td>
     <td>{{a.turno.nome}}</td>
     <td>{{a.especialidadeList[0].nome}}</td>
     <td>{{a.titulacaoList}}</td>
     <td>{{a.vinculo}}</td>
-    <td>{{a.ranking}}</td>
+    <td name="enfranking">{{a.ranking}}</td>
 </tr>
 </table>
 
