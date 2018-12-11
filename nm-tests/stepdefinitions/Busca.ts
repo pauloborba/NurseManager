@@ -15,6 +15,20 @@ let setSearch = (async (name,spec,sector,shift,liaison) => {
     await $(`select[name='liaisonsearch']`).sendKeys(<string> liaison);
 })
 
+let setSector = (async (name) => {
+    await $(`input[name='setornome']`).sendKeys(<string> name);
+    await $("button[name='setorcriar']").click();
+})
+
+let setNurse = (async (name,sector,shift,spec,liaison) => {
+    await $(`input[name='enfnome']`).sendKeys(<string> name);
+    await $(`select[name='enfsetor']`).sendKeys(<string> sector);
+    await $(`select[name='enfturno']`).sendKeys(<string> shift);
+    await $(`input[name='enfespecialidade']`).sendKeys(<string> spec);
+    await $(`select[name='enfvinculo']`).sendKeys(<string> liaison);
+    await $("button[name='enfcriar']").click();
+})
+
 defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
     setDefaultTimeout(10 * 1000);
@@ -24,45 +38,15 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await expect(browser.getTitle()).to.eventually.equal('NurseManager');
 
         await $("a[name='setores']").click();
-
-        await $(`input[name='setornome']`).sendKeys("Obstetrícia");
-        await $("button[name='setorcriar']").click();
-
-        await $(`input[name='setornome']`).sendKeys("Cirurgia");
-        await $("button[name='setorcriar']").click();
-        
-        await $(`input[name='setornome']`).sendKeys("Neonatologia");
-        await $("button[name='setorcriar']").click();
+        await setSector("Obstetrícia");
+        await setSector("Cirurgia");
+        await setSector("Neonatologia");
 
         await $("a[name='enfermeiros']").click();
-
-        await $(`input[name='enfnome']`).sendKeys("João Azevedo");
-        await $(`select[name='enfsetor']`).sendKeys("Obstetrícia");
-        await $(`select[name='enfturno']`).sendKeys("Turno Manhã");
-        await $(`input[name='enfespecialidade']`).sendKeys("Obstetrícia");
-        await $(`select[name='enfvinculo']`).sendKeys("CLT");
-        await $("button[name='enfcriar']").click();
-
-        await $(`input[name='enfnome']`).sendKeys("Joana Tavares");
-        await $(`select[name='enfsetor']`).sendKeys("Cirurgia");
-        await $(`select[name='enfturno']`).sendKeys("Plantão Diurno");
-        await $(`input[name='enfespecialidade']`).sendKeys("Cirurgia");
-        await $(`select[name='enfvinculo']`).sendKeys("CLT");
-        await $("button[name='enfcriar']").click();
-
-        await $(`input[name='enfnome']`).sendKeys("Reinaldo Jorge");
-        await $(`select[name='enfsetor']`).sendKeys("Obstetrícia");
-        await $(`select[name='enfturno']`).sendKeys("Plantão Noturno");
-        await $(`input[name='enfespecialidade']`).sendKeys("Obstetrícia");
-        await $(`select[name='enfvinculo']`).sendKeys("RJU");
-        await $("button[name='enfcriar']").click();
-
-        await $(`input[name='enfnome']`).sendKeys("Tibúrcio Farias");
-        await $(`select[name='enfsetor']`).sendKeys("Neonatologia");
-        await $(`select[name='enfturno']`).sendKeys("Turno Manhã");
-        await $(`input[name='enfespecialidade']`).sendKeys("Neonatologia");
-        await $(`select[name='enfvinculo']`).sendKeys("RJU");
-        await $("button[name='enfcriar']").click();
+        await setNurse("João Azevedo","Obstetrícia","Turno Manhã","Obstetrícia","CLT");
+        await setNurse("Joana Tavares","Cirurgia","Plantão Diurno","Cirurgia","CLT");
+        await setNurse("Reinaldo Jorge","Obstetrícia","Plantão Noturno","Obstetrícia","RJU");
+        await setNurse("Tibúrcio Farias","Neonatologia","Turno Manhã","Neonatologia","RJU");
 
         await $("a[name='busca']").click();
     })
