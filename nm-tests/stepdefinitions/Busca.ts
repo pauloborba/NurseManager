@@ -160,4 +160,42 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
             expect(Promise.resolve(elems.length)).to.eventually.equal(0);
         })
     })
+
+    Given (/^que o enfermeiro "([^\"]*)" esteja vinculado por "([^\"]*)"$/, async (name, liaison) =>{
+        var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
+        await allnurses;
+
+        var filt = allnurses.filter(elem => termMatch(elem, "enfname", name));
+        await filt;
+
+        var nurse = filt.filter( elem => termMatch(elem, "enfliaison", liaison));
+        await nurse;
+
+        await nurse.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(1);
+        })
+    })
+
+    When (/^eu faço a busca procurando por funcionários vinculados por "([^\"]*)", sem especificar nome, especialização, setor ou turno$/, async (searchTerm) => {
+        await setSearch("","","","",searchTerm);
+        await sleep(1000);
+    })
+
+    Then (/^são mostrados os enfermeiros "([^\"]*)" e "([^\"]*)"$/, async (resA, resB) => {
+        var allnames: ElementArrayFinder = element.all(by.name('enfname'));
+        await allnames;
+
+        var resultnames = allnames.filter(elem => 
+            elem
+            .getText()
+            .then(text => {
+                return [resA, resB].some(enf => enf === text);
+            })
+        )
+        await resultnames;
+
+        await resultnames.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(2);
+        })
+    })
 })
