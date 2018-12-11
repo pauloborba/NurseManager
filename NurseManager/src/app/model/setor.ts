@@ -40,4 +40,5 @@ export class Setor {
         }
         return turnos;
     }
+
 }
