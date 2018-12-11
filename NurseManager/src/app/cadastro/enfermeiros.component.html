@@ -4,6 +4,9 @@
 <tr>
     <td><label>Nome </label></td>
     <td><input [(ngModel)]="enfermeiro.nome" name="enfnome"></td>
+    
+    <td><label>Experiencia </label></td>
+    <td><input [(ngModel)]="enfermeiro.experiencia" name="enfexperiencia"></td>
 
     <td><label>Setor </label></td>
     <td>
@@ -47,6 +50,7 @@
 <table>
 <tr *ngIf="enfermeiros.length > 0">
     <th>Nome</th>
+    <th>Experiencia</th>
     <th>Setor</th>
     <th>Turno</th>
     <th>Especialidade</th>
@@ -56,6 +60,7 @@
 </tr>
 <tr *ngFor="let a of enfermeiros">
     <td>{{a.nome}}</td>
+    <td>{{a.experiencia}}</td>
     <td>{{a.setor.especialidadeSetor}}</td>
     <td>{{a.turno.nome}}</td>
     <td>{{a.especialidadeList[0].nome}}</td>

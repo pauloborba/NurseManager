@@ -12,6 +12,7 @@ export class Enfermeiro {
     disponibilidade: string;
     horasDict: number;
     dataAtualizacao: Date;
+    experiencia: number;
     constructor(){
         this.clean();
     }
@@ -28,6 +29,7 @@ export class Enfermeiro {
         this.disponibilidade = "";
         this.horasDict = 0;
         this.dataAtualizacao = new Date("2012-12-21");
+        this.experiencia = 0;
 
     }
 
@@ -42,6 +44,7 @@ export class Enfermeiro {
         enfermeiro.disponibilidade = this.disponibilidade;
         enfermeiro.horasDict = this.horasDict;
         enfermeiro.dataAtualizacao = this.dataAtualizacao;
+        enfermeiro.experiencia = this.experiencia;
         return enfermeiro;
     }
 }
