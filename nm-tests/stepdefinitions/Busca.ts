@@ -51,7 +51,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await $("a[name='busca']").click();
     })
 
-    Given(/^que os enfermeiros “([^\"]*)”, “([^\"]*)”, “([^\"]*)” e “([^\"]*)” estejam cadastrados$/, async (enfA, enfB, enfC, enfD) => {
+    Given(/^que os enfermeiros "([^\"]*)", "([^\"]*)", "([^\"]*)" e "([^\"]*)" estejam cadastrados$/, async (enfA, enfB, enfC, enfD) => {
         var allnames: ElementArrayFinder = element.all(by.name('enfname'));
         await allnames;
 
@@ -69,12 +69,12 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    When (/^eu faço a busca procurando por nomes com “([^\"]*)”, sem especificar especialização, setor, turno ou vínculo$/, async(searchTerm) => {
+    When (/^eu faço a busca procurando por nomes com "([^\"]*)", sem especificar especialização, setor, turno ou vínculo$/, async(searchTerm) => {
         await setSearch(searchTerm,"","","","");
         await sleep(1000);
     })
 
-    Then (/^são mostrados os enfermeiros “([^\"]*)”, “([^\"]*)” e “([^\"]*)”$/, async (resA, resB, resC) => {
+    Then (/^são mostrados os enfermeiros "([^\"]*)", "([^\"]*)" e "([^\"]*)"$/, async (resA, resB, resC) => {
         var allnames: ElementArrayFinder = element.all(by.name('enfname'));
         await allnames;
 
@@ -92,7 +92,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    Given (/^que o enfermeiro “([^\"]*)” tenha especialização em “([^\"]*)”$/, async (name, spec) => {
+    Given (/^que o enfermeiro "([^\"]*)" tenha especialização em "([^\"]*)"$/, async (name, spec) => {
         var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
         await allnurses;
 
@@ -107,12 +107,12 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    When (/^eu faço a busca procurando por especialistas em “([^\"]*)”, sem especificar nome, setor, turno ou vínculo$/, async (searchTerm) => {
+    When (/^eu faço a busca procurando por especialistas em "([^\"]*)", sem especificar nome, setor, turno ou vínculo$/, async (searchTerm) => {
         await setSearch("",searchTerm,"","","");
         await sleep(1000);
     })
 
-    Then (/^é mostrado o enfermeiro “([^\"]*)”$/, async (enfres) => {
+    Then (/^é mostrado o enfermeiro "([^\"]*)"$/, async (enfres) => {
         var allnames: ElementArrayFinder = element.all(by.name('enfname'));
         await allnames;
 
@@ -128,7 +128,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    Given (/^que o enfermeiro “([^\"]*)” esteja alocado em “([^\"]*)” no turno “([^\"]*)”$/, async (name, sector, shift) => {
+    Given (/^que o enfermeiro "([^\"]*)" esteja alocado em "([^\"]*)" no turno "([^\"]*)"$/, async (name, sector, shift) => {
 
         var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
         await allnurses;
@@ -147,7 +147,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         })
     })
 
-    When (/^eu faço a busca procurando pelo setor “([^\"]*)” no turno “([^\"]*)”, sem especificar nome, especialização ou vínculo$/, async (searchSector, searchShift) => {
+    When (/^eu faço a busca procurando pelo setor "([^\"]*)" no turno "([^\"]*)", sem especificar nome, especialização ou vínculo$/, async (searchSector, searchShift) => {
         await setSearch("","",searchSector,searchShift,"");
         await sleep(1000);
     })
