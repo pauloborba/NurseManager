@@ -131,4 +131,37 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
             expect(Promise.resolve(elems.length)).to.eventually.equal(1);
         })
     })
+
+    Given (/^que o enfermeiro “([^\"]*)” esteja alocado em “([^\"]*)” no turno “([^\"]*)”$/, async (name, sector, shift) => {
+
+        var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
+        await allnurses;
+
+        var filt1 = allnurses.filter(elem => termMatch(elem, "enfname", name));
+        await filt1;
+
+        var filt2 = filt1.filter(elem => termMatch(elem, "enfspecs", sector));
+        await filt2;
+
+        var nurse = filt2.filter( elem => termMatch(elem, "enfshift", shift));
+        await nurse;
+
+        await nurse.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(1);
+        })
+    })
+
+    When (/^eu faço a busca procurando pelo setor “([^\"]*)” no turno “([^\"]*)”, sem especificar nome, especialização ou vínculo$/, async (searchSector, searchShift) => {
+        await setSearch("","",searchSector,searchShift,"");
+        await sleep(1000);
+    })
+
+    Then (/^nenhum enfermeiro é mostrado$/, async () => {
+        var allnames: ElementArrayFinder = element.all(by.name('enfname'));
+        await allnames;
+
+        await allnames.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(0);
+        })
+    })
 })

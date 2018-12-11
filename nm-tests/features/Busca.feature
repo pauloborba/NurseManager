@@ -20,7 +20,7 @@ Then é mostrado o enfermeiro “Joana Tavares”
 Scenario: Busca por setor e turno
 Given que eu esteja na página de busca
 Given que o enfermeiro “João Azevedo” esteja alocado em “Obstetrícia” no turno “Turno Manhã”
-Given que a enfermeira “Joana Tavares” esteja alocado em “Cirurgia” no turno “Plantão Diurno”
+Given que o enfermeiro “Joana Tavares” esteja alocado em “Cirurgia” no turno “Plantão Diurno”
 Given que o enfermeiro “Reinaldo Jorge” esteja alocado em “Obstetrícia” no turno “Plantão Noturno”
 Given que o enfermeiro “Tibúrcio Farias” esteja alocado em “Neonatologia” no turno “Turno Manhã”
 When eu faço a busca procurando pelo setor “Cirurgia” no turno “Plantão Noturno”, sem especificar nome, especialização ou vínculo
