@@ -35,53 +35,34 @@ export class BuscaComponent implements OnInit{
         this.liaisonSelect = "";
     }
 
-    nameFilter(enf: Enfermeiro, term: string):boolean{
+    checkOrTrueIfEmpty (enf: Enfermeiro, term: string, callback){
         if (term.length > 0){
-            return enf.nome.includes(term);
+            return callback(enf,term);
         } else {
             return true;
         }
     }
 
-    specFilter(enf: Enfermeiro, term: string):boolean{
-        if (term.length > 0){
-            return enf.especialidadeList.some(spec => spec.nome === term);
-        } else {
-            return true;
-        }
+    nameFilter = ((enf: Enfermeiro, term: string) => enf.nome.includes(term));
+    specFilter = ((enf: Enfermeiro, term: string) => enf.especialidadeList.some(spec => spec.nome === term));
+    sectorFilter = ((enf: Enfermeiro, term: string) => enf.setor.especialidadeSetor === term);
+    shiftFilter = ((enf: Enfermeiro, term: string) => enf.turno.nome === term);
+    liaisonFilter = ((enf: Enfermeiro, term: string) => enf.vinculo === term);
+
+    checks(enf: Enfermeiro): boolean[]{
+        return [
+            this.checkOrTrueIfEmpty(enf, this.nameSelect, this.nameFilter),
+            this.checkOrTrueIfEmpty(enf, this.specSelect, this.specFilter),
+            this.checkOrTrueIfEmpty(enf, this.sectorSelect, this.sectorFilter),
+            this.checkOrTrueIfEmpty(enf, this.shiftSelect, this.shiftFilter),
+            this.checkOrTrueIfEmpty(enf, this.liaisonSelect, this.liaisonFilter),
+        ]
     }
 
-    sectorFilter(enf: Enfermeiro, term: string):boolean{
-        if (term.length > 0){
-            return enf.setor.especialidadeSetor === term;
-        } else {
-            return true;
-        }
-    }
-
-    shiftFilter(enf: Enfermeiro, term: string):boolean{
-        if (term.length > 0){
-            return enf.turno.nome === term;
-        } else {
-            return true;
-        }
-    }
-
-    liaisonFilter(enf: Enfermeiro, term: string):boolean{
-        if (term.length > 0){
-            return enf.vinculo === term;
-        } else {
-            return true;
-        }
-    }
+    reducer = ((a,b) => a && b);
 
     onSearch(): void {
-        this.filtList = this.enfList
-        .filter(enf => this.nameFilter(enf,this.nameSelect))
-        .filter(enf => this.specFilter(enf,this.specSelect))
-        .filter(enf => this.sectorFilter(enf,this.sectorSelect))
-        .filter(enf => this.shiftFilter(enf,this.shiftSelect))
-        .filter(enf => this.liaisonFilter(enf,this.liaisonSelect));
+        this.filtList = this.enfList.filter(enf => this.checks(enf).reduce(this.reducer));
     }
 
     ngOnInit(): void{
