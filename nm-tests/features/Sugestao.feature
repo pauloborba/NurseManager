@@ -1,5 +1,5 @@
 Feature: As a Chefe de Divisão
-	 I want to receber sugestões de enfermeiros que sejam mais adequados para a alocação que 	  estou tentando fazer
+	 I want to receber sugestões de enfermeiros que sejam mais adequados para a alocação que estou tentando fazer
 	 So that I possa sempre alocar os enfermeiros mais qualificados e experientes na área
 
 	
