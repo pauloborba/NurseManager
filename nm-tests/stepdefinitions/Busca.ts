@@ -96,14 +96,10 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
         await allnurses;
 
-        var nurse = allnurses.filter(elem => {
-            return Promise.all([
-                termMatch(elem, "enfname", name),
-                termMatch(elem, "enfspecs", spec)
-            ]).then(matches => {
-                return matches[0] && matches[1];
-            })
-        })
+        var filt = allnurses.filter(elem => termMatch(elem, "enfname", name));
+        await filt;
+
+        var nurse = filt.filter(elem => termMatch(elem, "enfspecs", spec));
         await nurse;
 
         await nurse.then(elems => {
