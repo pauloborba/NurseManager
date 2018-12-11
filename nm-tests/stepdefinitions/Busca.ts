@@ -5,6 +5,8 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
+let termMatch = ((elem, name, term) => elem.element(by.name(name)).getText().then(text => text === term));
+
 let setSearch = (async (name,spec,sector,shift,liaison) => {
     await $(`input[name='namesearch']`).sendKeys(<string> name);
     await $(`select[name='specsearch']`).sendKeys(<string> spec);
@@ -102,6 +104,45 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
         await resultnames.then(elems => {
             expect(Promise.resolve(elems.length)).to.eventually.equal(3);
+        })
+    })
+
+    Given (/^que o enfermeiro “([^\"]*)” tenha especialização em “([^\"]*)”$/, async (name, spec) => {
+        var allnurses: ElementArrayFinder = element.all(by.name('enflist'));
+        await allnurses;
+
+        var nurse = allnurses.filter(elem => {
+            return Promise.all([
+                termMatch(elem, "enfname", name),
+                termMatch(elem, "enfspecs", spec)
+            ]).then(matches => {
+                return matches[0] && matches[1];
+            })
+        })
+        await nurse;
+
+        await nurse.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(1);
+        })
+    })
+
+    When (/^eu faço a busca procurando por especialistas em “([^\"]*)”, sem especificar nome, setor, turno ou vínculo$/, async (searchTerm) => {
+        setSearch("",searchTerm,"","","");
+    })
+
+    Then (/^é mostrado o enfermeiro “([^\"]*)”$/, async (enfres) => {
+        var allnames: ElementArrayFinder = element.all(by.name('enfname'));
+        await allnames;
+
+        var resultnames = allnames.filter(elem => 
+            elem
+            .getText()
+            .then(text => text === enfres)
+        )
+        await resultnames;
+
+        await resultnames.then(elems => {
+            expect(Promise.resolve(elems.length)).to.eventually.equal(1);
         })
     })
 })
