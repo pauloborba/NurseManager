@@ -12,16 +12,15 @@ Then Eu posso ver uma janela com a fórmula de ranqueamento "(#1 + #2)" e logo a
 
 
 Scenario: Checagem de ranking de um enfermeiro cadastrado para determinado setor
-Given As valorações da fórmula de ranqueamento estão da forma "Titulação na área" = "2", "Especialização na área" = "2", "Experiência" = "1"
-And A enfermeira "Sônia" foi cadastrada com apenas titulação em "Nefrologia", especialização em "Nefrologia" e "7" anos de experiencia
-And A enfermeira "Joana" foi cadastrada com apenas titulação em "Enfermagem", especialização em "Enfermagem" e "8" anos de experiencia
-And A enfermeira "Sandra" foi cadastrada com apenas titulação em "Nefrologia" e "0" anos de experiencia
-And Apenas "Sônia", "Joana" e "Sandra" foram cadastradas no sistema
-When Eu seleciono o período "Diurno" dentro da janela do departamento de "Cirurgia"
+Given o setor "Nefrologia" foi cadastrado
+Given eu estou na página de cadastro de enfermeiros
+When eu cadastro o enfermeiro "João Azevedo", com apenas titulação em "Nefrologia", especialização em "Nefrologia" e "7" anos de experiencia, que está alocado em "Nefrologia" no turno "Turno Manhã"
+When eu cadastro o enfermeiro "Joana Tavares", com apenas titulação em "Enfermagem", especialização em "Enfermagem" e "8" anos de experiencia, que está alocado em "Nefrologia" no turno "Turno Manhã"
+When eu cadastro o enfermeiro "Sonia Paes",com apenas titulação em "Nefrologia", especializacao em "Enfermagem" e "0" anos de experiencia, que está alocado em "Nefrologia" no turno "Plantão Diurno"
 Then Eu posso ver uma lista dos cadastrados ordenados pelo seu rating de relevância.
-And Eu posso ver a enfermeira em primeiro lugar "Sônia" e o seu rating é "11"
-And Eu posso ver a enfermeira em segundo lugar "Sônia" e o seu rating é "8"
-And Eu posso ver a enfermeira em terceiro lugar "Sônia" e o seu rating é "2"
+Then Eu posso ver a enfermeira "Sônia" e o seu ranking é "11"
+Then Eu posso ver a enfermeira "Sônia" e o seu ranking é "8"
+Then Eu posso ver a enfermeira "Sônia" e o seu ranking é "2"
 
 
 Scenario: Aviso de enfermeiro pouco qualificado

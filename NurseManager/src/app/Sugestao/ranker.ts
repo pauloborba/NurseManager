@@ -7,7 +7,7 @@ export class Ranker {
     getRanking(enfermeiro: Enfermeiro, setor: Setor, turno: string): number {
         var ranking: number = 0;
         var titulacao: string[] = enfermeiro.titulacaoList;
-        var especializacao: string[];
+        var especializacao: string[] = [];
         for(let e of enfermeiro.especialidadeList){
             especializacao.push(e.nome);
         }
@@ -23,7 +23,7 @@ export class Ranker {
                     ranking = ranking + 2;
                 }
             }
-            ranking = ranking + enfermeiro.experiencia;
+            ranking = ranking + enfermeiro.experiencia*1;
         }
         return ranking;
       }
